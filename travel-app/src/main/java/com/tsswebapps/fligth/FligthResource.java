@@ -22,11 +22,18 @@ public class FligthResource {
         return Fligth.findById(id);
     }
 
+    @GET
+    @Path("/findTravelOrderId")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Fligth findByTravelOrderId(@QueryParam("travelOrderId") Long travelOrderId) {
+        return Fligth.findByOrderId(travelOrderId);
+    }
+
     @Transactional
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Fligth save(Fligth fligth) {
+    public Fligth newFligth(Fligth fligth) {
         fligth.id = null;
         fligth.persist();
         return fligth;

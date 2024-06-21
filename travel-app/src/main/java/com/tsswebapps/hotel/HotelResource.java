@@ -21,10 +21,16 @@ public class HotelResource {
         return Hotel.findById(id);
     }
 
+    @GET
+    @Path("/findByTravelOrderId")
+    public Hotel findByTravelOrderId(@QueryParam("travelOrderId") Long travelOrderId) {
+        return Hotel.findByTravelOrderId(travelOrderId);
+    }
+
     @Transactional
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Hotel create(Hotel hotel) {
+    public Hotel newHotel(Hotel hotel) {
         hotel.id = null;
         hotel.persist();
         return hotel;

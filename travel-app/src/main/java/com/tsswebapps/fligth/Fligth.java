@@ -8,4 +8,8 @@ public class Fligth extends PanacheEntity {
     public Long orderId;
     public String fligthFrom;
     public String fligthTo;
+
+    public static Fligth findByOrderId(Long travelOrderId) {
+        return find("orderId", travelOrderId).firstResult();
+    }
 }
